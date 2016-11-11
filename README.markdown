@@ -73,7 +73,7 @@ implementation will be used, otherwise it will fall back to a
 Writing your own WebSocket Server
 ---------------------------------
 
-The `org.java_websocket.server.WebSocketServer` abstract class implements the
+The `WebSocketServer` abstract class implements the
 server-side of the
 [WebSocket Protocol](http://www.whatwg.org/specs/web-socket-protocol/).
 A WebSocket server by itself doesn't do anything except establish socket
@@ -83,7 +83,7 @@ connections though HTTP. After that it's up to **your** subclass to add purpose.
 Writing your own WebSocket Client
 ---------------------------------
 
-The `org.java_websocket.client.WebSocketClient` abstract class can connect to
+The `WebSocketClient` abstract class can connect to
 valid WebSocket servers. The constructor expects a valid `ws://` URI to
 connect to. Important events `onOpen`, `onClose`, `onMessage` and `onIOError` 
 get fired throughout the life of the WebSocketClient, and must be implemented 
