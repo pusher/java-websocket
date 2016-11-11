@@ -8,7 +8,6 @@ repositories {
     mavenCentral()
 }
 
-group = 'com.pusher.java_websocket'
 version = '1.4.0-SNAPSHOT'
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
@@ -20,7 +19,7 @@ configurations {
 configure(install.repositories.mavenInstaller) {
     pom.version = project.version
     pom.groupId = "com.pusher"
-    pom.artifactId = 'Java-WebSocket'
+    pom.artifactId = 'java-websocket'
 }
 
 dependencies {
