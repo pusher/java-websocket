@@ -25,6 +25,11 @@ configure(install.repositories.mavenInstaller) {
 
 dependencies {
 	deployerJars "org.apache.maven.wagon:wagon-webdav:1.0-beta-2"
+
+    testCompile 'info.cukes:cucumber-java:1.2.5'
+    testCompile 'junit:junit:4.12'
+    testCompile 'info.cukes:cucumber-junit:1.2.5'
+
 }
 
 //TODO: deployment stuff from pusher-java-client

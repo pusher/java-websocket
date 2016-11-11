@@ -5,10 +5,11 @@ import com.pusher.java_websocket.drafts.Draft;
 import com.pusher.java_websocket.handshake.ClientHandshake;
 import com.pusher.java_websocket.handshake.ServerHandshake;
 import com.pusher.java_websocket.server.WebSocketServer;
-import cucumber.annotation.After;
-import cucumber.annotation.en.Given;
-import cucumber.annotation.en.Then;
-import cucumber.annotation.en.When;
+
+import cucumber.api.java.After;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.junit.Assert;
 
 import java.io.IOException;
@@ -97,7 +98,7 @@ public class AutobahnClientScenario {
 	private static Draft getDraft(int number) {
 		Exception exception;
 		try {
-			return (Draft) Class.forName("org.java_websocket.drafts.Draft_" + number).newInstance();
+			return (Draft) Class.forName("com.pusher.java_websocket.drafts.Draft_" + number).newInstance();
 		} catch(InstantiationException e) {
 			exception = e;
 		} catch(IllegalAccessException e) {
