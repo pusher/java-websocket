@@ -1,6 +1,12 @@
-[![Build Status](https://travis-ci.org/ck1125/Java-WebSocket.png?branch=master)](https://travis-ci.org/ck1125/Java-WebSocket)
-Java WebSockets
+Java Websocket
 ===============
+
+This is a fork of the [TooTallNate/Java-Websocket](https://github.com/TooTallNate/Java-WebSocket) library that allows Pusher to publish versions and patches on Maven repository.
+The original project seems to have been abandoned and no updates have been published on Maven Central.
+
+The versioning will continue from 1.4.0 - current Maven Central version is 1.3.0, and an unofficial version published on Clojars is 1.4.0
+
+# Original project's README:
 
 This repository contains a barebones WebSocket server and client implementation
 written in 100% Java. The underlying classes are implemented `java.nio`, which allows for a
@@ -73,7 +79,7 @@ implementation will be used, otherwise it will fall back to a
 Writing your own WebSocket Server
 ---------------------------------
 
-The `org.java_websocket.server.WebSocketServer` abstract class implements the
+The `WebSocketServer` abstract class implements the
 server-side of the
 [WebSocket Protocol](http://www.whatwg.org/specs/web-socket-protocol/).
 A WebSocket server by itself doesn't do anything except establish socket
@@ -83,7 +89,7 @@ connections though HTTP. After that it's up to **your** subclass to add purpose.
 Writing your own WebSocket Client
 ---------------------------------
 
-The `org.java_websocket.client.WebSocketClient` abstract class can connect to
+The `WebSocketClient` abstract class can connect to
 valid WebSocket servers. The constructor expects a valid `ws://` URI to
 connect to. Important events `onOpen`, `onClose`, `onMessage` and `onIOError` 
 get fired throughout the life of the WebSocketClient, and must be implemented 

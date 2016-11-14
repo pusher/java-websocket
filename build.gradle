@@ -8,8 +8,7 @@ repositories {
     mavenCentral()
 }
 
-group = 'org.java_websocket'
-version = '1.2.1-SNAPSHOT'
+version = '1.4.0-SNAPSHOT'
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
 
@@ -19,15 +18,20 @@ configurations {
 
 configure(install.repositories.mavenInstaller) {
     pom.version = project.version
-    pom.groupId = "org.java_websocket"
-    pom.artifactId = 'Java-WebSocket'
+    pom.groupId = "com.pusher"
+    pom.artifactId = 'java-websocket'
 }
 
 dependencies {
 	deployerJars "org.apache.maven.wagon:wagon-webdav:1.0-beta-2"
+
+    testCompile 'info.cukes:cucumber-java:1.2.5'
+    testCompile 'junit:junit:4.12'
+    testCompile 'info.cukes:cucumber-junit:1.2.5'
+
 }
 
-
+//TODO: deployment stuff from pusher-java-client
 //deploy to maven repository
 //uploadArchives {
 //    repositories.mavenDeployer {
@@ -39,6 +43,6 @@ dependencies {
 //}
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.4'
+    gradleVersion = '2.14.1'
 }
 
