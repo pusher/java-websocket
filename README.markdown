@@ -1,6 +1,12 @@
-[![Build Status](https://travis-ci.org/ck1125/Java-WebSocket.png?branch=master)](https://travis-ci.org/ck1125/Java-WebSocket)
-Java WebSockets
+Java Websocket
 ===============
+
+This is a fork of the [TooTallNate/Java-Websocket](https://github.com/TooTallNate/Java-WebSocket) library that allows Pusher to publish versions and patches on Maven repository.
+The original project seems to have been abandoned and no updates have been published on Maven Central.
+
+The versioning will continue from 1.4.0 - current Maven Central version is 1.3.0, and an unofficial version published on Clojars is 1.4.0
+
+# Original project's README:
 
 This repository contains a barebones WebSocket server and client implementation
 written in 100% Java. The underlying classes are implemented `java.nio`, which allows for a
