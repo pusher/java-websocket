@@ -4,7 +4,12 @@ Java Websocket
 This is a fork of the [TooTallNate/Java-Websocket](https://github.com/TooTallNate/Java-WebSocket) library that allows Pusher to publish versions and patches on Maven repository.
 The original project seems to have been abandoned and no updates have been published on Maven Central.
 
-The versioning will continue from 1.4.0 - current Maven Central version is 1.3.0, and an unofficial version published on Clojars is 1.4.0
+The versioning will continue from 1.4.0 - current Maven Central version is 1.3.0, and an unofficial version published on Clojars is 1.3.1
+
+Download from: Maven Central
+GroupId: `com.pusher`
+Artifact: `java-websocket`
+Version: `1.4.1`
 
 # Original project's README:
 

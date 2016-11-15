@@ -5,6 +5,9 @@ repositories {
     mavenCentral()
 }
 
+targetCompatibility = '1.7'
+sourceCompatibility = '1.7'
+
 dependencies {
     testCompile 'info.cukes:cucumber-java:1.2.5'
     testCompile 'junit:junit:4.12'
