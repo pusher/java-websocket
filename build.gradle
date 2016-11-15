@@ -1,46 +1,15 @@
 apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'maven'
-
+apply from: 'maven-push.gradle'
 
 repositories {
-    mavenLocal()
     mavenCentral()
 }
 
-version = '1.4.0-SNAPSHOT'
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
-
-configurations {
-    deployerJars
-}
-
-configure(install.repositories.mavenInstaller) {
-    pom.version = project.version
-    pom.groupId = "com.pusher"
-    pom.artifactId = 'java-websocket'
-}
-
 dependencies {
-	deployerJars "org.apache.maven.wagon:wagon-webdav:1.0-beta-2"
-
     testCompile 'info.cukes:cucumber-java:1.2.5'
     testCompile 'junit:junit:4.12'
     testCompile 'info.cukes:cucumber-junit:1.2.5'
-
 }
-
-//TODO: deployment stuff from pusher-java-client
-//deploy to maven repository
-//uploadArchives {
-//    repositories.mavenDeployer {
-//        configuration = configurations.deployerJars
-//        repository(url: repositoryUrl) {
-//			authentication(userName: repositoryUsername, password: repositoryPassword)
-//		}
-//    }
-//}
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.14.1'
