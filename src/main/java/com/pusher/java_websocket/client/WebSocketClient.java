@@ -3,6 +3,7 @@ package com.pusher.java_websocket.client;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.Socket;
@@ -12,17 +13,17 @@ import java.nio.channels.NotYetConnectedException;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
+import com.pusher.java_websocket.WebSocket;
 import com.pusher.java_websocket.WebSocketAdapter;
 import com.pusher.java_websocket.WebSocketImpl;
+import com.pusher.java_websocket.drafts.Draft;
 import com.pusher.java_websocket.drafts.Draft_17;
+import com.pusher.java_websocket.exceptions.InvalidHandshakeException;
 import com.pusher.java_websocket.framing.CloseFrame;
 import com.pusher.java_websocket.framing.Framedata;
+import com.pusher.java_websocket.handshake.HandshakeImpl1Client;
 import com.pusher.java_websocket.handshake.Handshakedata;
 import com.pusher.java_websocket.handshake.ServerHandshake;
-import com.pusher.java_websocket.WebSocket;
-import com.pusher.java_websocket.drafts.Draft;
-import com.pusher.java_websocket.exceptions.InvalidHandshakeException;
-import com.pusher.java_websocket.handshake.HandshakeImpl1Client;
 
 /**
  * A subclass must implement at least <var>onOpen</var>, <var>onClose</var>, and <var>onMessage</var> to be
@@ -171,6 +172,15 @@ public abstract class WebSocketClient extends WebSocketAdapter implements Runnab
 			onWebsocketError( engine, e );
 			engine.closeConnection( CloseFrame.NEVER_CONNECTED, e.getMessage() );
 			return;
+		} catch (InternalError e) {
+			// https://bugs.openjdk.java.net/browse/JDK-8173620
+			if (e.getCause() instanceof InvocationTargetException && e.getCause().getCause() instanceof IOException) {
+				IOException cause = (IOException) e.getCause().getCause();
+				onWebsocketError(engine, cause);
+				engine.closeConnection(CloseFrame.NEVER_CONNECTED, cause.getMessage());
+				return;
+			}
+			throw e;
 		}
 
 		writeThread = new Thread( new WebsocketWriteThread() );
